@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		.active{
+			background: yellow;
+		}	
+		#box div{
+			width:200px;
+			height: 200px;
+			border: 1px solid #000;
+			display: none;
+		}
+		#box div.show{
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>		
+	</div>
+	<script>
+		 function selectCard(id){
+		 	this.box = document.getElementById(id);
+			this.btn = this.box.getElementsByTagName('input');
+			this.divs = this.box.getElementsByTagName('div');
+		 }
+		 selectCard.prototype.Event=function(){
+		 	var _this=this;
+		 	for(var i=0;i<this.btn.length;i++){
+		 		this.btn[i].index=i;
+		 		this.btn[i].addEventListener('click',function(){
+		 			_this.change(this);
+		 		})
+		 	}
+		 }
+		 selectCard.prototype.change=function(that){
+		 	var _this=this;
+		 	for(var i=0;i<this.btn.length;i++){
+		 		this.btn[i].classList.remove('active')
+		 		this.divs[i].classList.remove('show')
+		 	}
+		 	that.classList.add('active');
+		 	this.divs[that.index].classList.add('show')
+		 }
+		var so=new selectCard('box');
+		so.Event();
+	</script>
+	</body>
+</html>

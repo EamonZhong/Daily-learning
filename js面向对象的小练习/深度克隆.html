@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*var arr2 = JSON.parse(JSON.stringify(arr));*/
+			var arr = [1,2,3,4,[0,1,2],{name:'leo'}];
+			function deepclone(obj){
+				var tos=Object.prototype.toString;
+				var o=obj.push?[]:{};
+				for(var attr in obj){
+					if(tos.call(obj[attr])==='[object Object]' || tos.call(obj[attr])==='[object Array]')
+					{
+						o[attr]=deepclone(obj[attr])
+					}
+					else{
+						o[attr]=obj[attr]
+					}
+				}
+				return o;
+			}
+			var arr2=deepclone(arr);
+			console.log(arr.constructor.name=='Array')
+			console.log(arr2);
+			arr2[4].push('x');
+			console.log(arr);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				height: 100px;
+				width: 100px;
+				background: red;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			#box2{
+				height: 100px;
+				width: 100px;
+				background: blue;
+				position: absolute;
+				top: 0px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+		<script>
+			function moveElement(id){
+				this.box=document.getElementById(id)
+				this.disX=0;
+				this.disY=0;
+				this.init();
+			}
+			moveElement.prototype.init=function(){
+				var _this=this;
+				this.box.addEventListener('mousedown',function(ev){
+					_this.down(ev);
+					return false;
+				})
+			}
+			moveElement.prototype.down=function(ev){
+				var _this=this;
+				this.disX=ev.clientX-this.box.offsetLeft;
+				this.disY=ev.clientY-this.box.offsetTop;
+				function Move(ev){
+					_this.move(ev);
+				}
+				document.addEventListener('mousemove',Move);
+				function Up(ev){
+					_this.up(ev,Move,Up)
+				}
+				document.addEventListener('mouseup',Up)				
+			}
+			moveElement.prototype.move=function(ev){
+				this.box.style.left=ev.clientX-this.disX+'px';
+				this.box.style.top=ev.clientY-this.disY+'px';
+			}
+			moveElement.prototype.up=function(ev,move,up){
+				document.removeEventListener('mousemove',move);
+				document.removeEventListener('mouseup',up);
+			}
+			
+			var bx= new moveElement('box');
+			bx.init();
+			function moveElement2(id){
+				moveElement.call(this,id)
+			}
+			
+			function fns(){}
+			fns.prototype=moveElement.prototype;
+			var ms = new fns();
+			moveElement2.prototype=ms;
+			moveElement2.prototype.constructor=moveElement2;
+			moveElement2.prototype.move=function(ev){
+				this.l=ev.clientX-this.disX;
+				this.t=ev.clientY-this.disY;
+				this.l=ev.clientX-this.disX;
+				if(this.l<0){
+					this.l=0;
+				}
+				else if(this.l>window.innerWidth-this.box.offsetWidth){
+					this.l=window.innerWidth-this.box.offsetWidth;
+				}
+				if(this.t<0){
+					this.t=0;
+				}
+				else if(this.t>window.innerHeight-this.box.offsetHeight){
+					this.t=window.innerHeight-this.box.offsetHeight;
+				}
+				this.box.style.left=this.l+'px';
+				this.box.style.top=this.t+'px';
+			}
+			var mv2 = new moveElement2('box2');
+			mv2.init();
+		</script>
+	</body>
+</html>
