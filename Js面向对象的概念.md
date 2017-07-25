@@ -238,7 +238,35 @@ op5:
 				fn(); //window
 			}
 			new fn2;
-		}; //window
+		}; //window			
 
+## 自定义事件 ##
 
-			
+### 概念 ###
+
+1. 自定义事件：将某些业务中特殊情况的事件定义成一个独立的事件。
+2. 事件存储器：将同一事件的所有函数存放在一个数组当中。
+3. 事件触发器：当某个指定的事件触发的时候，调用这个触发器，执行触发器中的执行事件的所有函数。
+
+### 代码模拟 ###
+
+1. 存储器模拟：
+		
+		function addEvent(obj,Events,fn){		
+			//若有对象，则走原来的那个对象，没有对象就创建一个对象去管理
+			obj.zdy = obj.zdy || {};
+			//如果obj.zdy中没有这个事件名，则复制一个空数组
+			obj.zdy[Events] = obj.zdy[Events] || [];
+			//把函数push到这个obj.zdy[指定事件]中
+			obj.zdy[Events].push(fn);		
+		};
+
+2. 触发器模拟：
+		
+		function trigger(obj,Events){
+			//如果obj.zdy没有这个事件，说明没有绑定这个事件
+			if(!obj.zdy[Events])return;			
+			obj.zdy[Events].forEach((e,i)=>{
+				e.call(obj);
+			});
+		}
