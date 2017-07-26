@@ -25,4 +25,13 @@
 		first()			第一个 
 		last()			最后一个
 
-		
+3. BOM操作：
+
+		height()/width() 
+		设置的宽高，不支持padding和border
+				
+		innerWidth()/innerHeight() 支持padding 不支持border
+		设置：设置之后总的宽高为固定的某个值（不带border）。
+				
+		outerHeight/outerWidth 支持padding和border(获取的时候还支持margin)
+		设置：设置之后总的宽高为固定的某个值。
