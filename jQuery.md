@@ -24,6 +24,13 @@
 		siblings()		兄弟级
 		first()			第一个 
 		last()			最后一个
+		$('<标签>')		创建		
+		remove()		删除
+		append()		插入
+		appendTo()		子元素插入父元素
+		prepend()		放到某个元素的第一位
+		insertAfter()	插入到某个元素的后面
+		insertBefore()	插入到某个元素的前面
 
 3. BOM操作：
 
@@ -35,3 +42,5 @@
 				
 		outerHeight/outerWidth 支持padding和border(获取的时候还支持margin)
 		设置：设置之后总的宽高为固定的某个值。
+
+4.	
