@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" name="user" id="user"/><span id="span"></span><br/>
+		<script>
+			let user=document.getElementById('user');
+			let span=document.getElementById('span');
+			user.onblur=function(){
+				var ajax = new XMLHttpRequest;
+				ajax.open('get','php/get.php?user='+encodeURI(user.value));
+				ajax.send();
+				ajax.onload=function(){
+					span.innerHTML=ajax.responseText;
+				}
+			}			
+		</script>
+	</body>
+</html>

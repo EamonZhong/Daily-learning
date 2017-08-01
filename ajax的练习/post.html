@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" id="user"/><span id="span"></span>
+	<script type="text/javascript">
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	user.onblur=function(){
+		var ajax=new XMLHttpRequest;
+		ajax.open('post','php/post.php');
+		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		ajax.send('user='+user.value);
+		ajax.onload=function(){
+			span.innerText=ajax.responseText;
+		}
+	}
+	</script>
+	</body>
+</html>

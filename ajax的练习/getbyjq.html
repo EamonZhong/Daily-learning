@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" name="user" id="user"/><span></span><br />
+		<script src="jquery-3.2.1.min.js"></script>
+		<script>
+			$('#user').blur(function(){
+				$.ajax({
+					type:"get",
+					url:"php/get.php",
+					data:{
+						user:$('#user').val()
+					},
+				success:function(data){
+				$('span').text(data);
+					console.log(data);
+			}
+				});
+			})
+		</script>
+	</body>
+</html>
