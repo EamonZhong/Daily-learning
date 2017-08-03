@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="txt" id="txt" />
+		<ul id="ul">
+			
+		</ul>
+	<script src="js/jquery-3.2.1.min.js"></script>	
+	<script>
+		function fn(data){
+			console.log(data)
+			for(let i=0;i<data.s.length;i++){
+				let li = document.createElement('li');
+				li.innerText=data.s[i];
+				$('#ul').append(li);
+			}
+		}
+		$('#txt').keyup(function(){
+			let sr = document.createElement('script');
+			sr.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+$('#txt').val()+'&cb=fn';
+			$('head:eq(0)').append(sr);
+	})
+	</script>	
+	</body>
+</html>

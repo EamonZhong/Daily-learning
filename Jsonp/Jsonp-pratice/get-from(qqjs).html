@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">按钮</button>
+	</body>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script>
+		function fn(data){
+			console.log(data)
+		}
+		$('#btn').click(function(){
+			const sc = document.createElement('script')
+			sc.src='http://localhost/Jsonp/php/qq.js';
+			$('head:eq(0)').append(sc);
+		})
+	</script>
+</html>
