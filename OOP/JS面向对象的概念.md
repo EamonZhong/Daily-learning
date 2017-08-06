@@ -11,142 +11,142 @@
 
 ## 分析代码（搞懂原型链和原型）
 
-			function fn(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			fn.prototype.say=function(){
-				alert('this is a fnss');
-			}
-			Object.prototype.say=function(){
-				alert('this is a object');
-			}
-			Function.prototype.say=function(){
-				alert('this is a function');
-			}
-			var obj = new fn('aa',12);
-			obj.say();
+	function fn(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	fn.prototype.say=function(){
+		alert('this is a fnss');
+	}
+	Object.prototype.say=function(){
+		alert('this is a object');
+	}
+	Function.prototype.say=function(){
+		alert('this is a function');
+	}
+	var obj = new fn('aa',12);
+	obj.say();
   
-   上述代码执行后的结果应该为 this is a fnss
+上述代码执行后的结果应该为 this is a fnss
 
-			function fn(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			Object.prototype.say=function(){
-				alert('this is a object');
-			}
-			Function.prototype.say=function(){
-				alert('this is a function');
-			}
-			var obj = new Object;
-			obj.say();
+	function fn(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	Object.prototype.say=function(){
+		alert('this is a object');
+	}
+	Function.prototype.say=function(){
+		alert('this is a function');
+	}
+	var obj = new Object;
+	obj.say();
 
-   上述代码执行后的结果为 this is a object
+上述代码执行后的结果为 this is a object
 
-			function fn(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			fn.prototype.say=function(){
-				alert('this is a fnss');
-			}
-			Object.prototype.say=function(){
-				alert('this is a object');
-			}
-			Function.prototype.say=function(){
-				alert('this is a function');
-			}
-			fn.say();
+	function fn(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	fn.prototype.say=function(){
+		alert('this is a fnss');
+	}
+	Object.prototype.say=function(){
+		alert('this is a object');
+	}
+	Function.prototype.say=function(){
+		alert('this is a function');
+	}
+	fn.say();
 
-  上述代码执行后的结果是 this is a function
-
-
-			function fn(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			fn.prototype.say=function(){
-				alert('this is a fnss');
-			}
-			Object.prototype.say=function(){
-				alert('this is a object');
-			}
-			Function.prototype.say=function(){
-				alert('this is a function');
-			}
-			Object.say()
-
-  上述代码执行后的结果是 this is a function
-
-			function fn(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			fn.prototype.say=function(){
-				alert('this is a fnss');
-			}
-			Object.prototype.say=function(){
-				alert('this is a object');
-			}
-			Function.prototype.say=function(){
-				alert('this is a function');
-			}
-			Function.say();
-
-  上述代码执行后的结果是 this is a function
+上述代码执行后的结果是 this is a function
 
 
-			function fn(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			Object.prototype.say=function(){
-				alert('this is a object');
-			}
-			Function.say();
-			fn.say();
-			var obj = new Function;
-			obj.say();
+	function fn(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	fn.prototype.say=function(){
+		alert('this is a fnss');
+	}
+	Object.prototype.say=function(){
+		alert('this is a object');
+	}
+	Function.prototype.say=function(){
+		alert('this is a function');
+	}
+	Object.say()
+
+上述代码执行后的结果是 this is a function
+
+	function fn(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	fn.prototype.say=function(){
+		alert('this is a fnss');
+	}
+	Object.prototype.say=function(){
+		alert('this is a object');
+	}
+	Function.prototype.say=function(){
+		alert('this is a function');
+	}
+	Function.say();
+
+上述代码执行后的结果是 this is a function
+
+
+	function fn(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	Object.prototype.say=function(){
+		alert('this is a object');
+	}
+	Function.say();
+	fn.say();
+	var obj = new Function;
+	obj.say();
  
-  上述代码执行后的结果都是 this is a object
+上述代码执行后的结果都是 this is a object
 
   从上面几个情况可以分析出，一个实例化对象去调用某个方法无论何种情况都是遵循以下特点：
 				
-  **实例化对象上就有方法 > 构造函数原型下的方法 > Object.prototype**
-	 	
-  **对象找链 -> 构造函数的原型 -> 构造函数原型下的链 -> 构造函数的原型**
+**实例化对象上就有方法 > 构造函数原型下的方法 > Object.prototype**
+ 	
+**对象找链 -> 构造函数的原型 -> 构造函数原型下的链 -> 构造函数的原型**
 
 
 ## ES6中面向对象的写法
 
 ES6引入了Class（类）这个概念。新的class写法让对象原型的写法更加清晰、更像面向对象编程的语法，也更加通俗易懂,我们可以通过下面一段具体的代码来了解clas extends 以及 super
 
-		class Person{
-			constructor(name,age){
-				this.name=name;
-				this.age=age;
-			}
-			say(){
-				alert('我的名字是'+this.name+'今年'+this.age+'岁了，我会说话');
-			}
+	class Person{
+		constructor(name,age){
+			this.name=name;
+			this.age=age;
 		}
-		class Student extends Person{
-			constructor(name,age,grade){
-				super(name,age)
-				this.grade=grade;
-			}
-			say(){
-				alert(1);
-			}
-			study(){
-				alert('我的名字是'+this.name+'今年'+this.age+'岁了，我的成绩是'+this.grade)
-			}
+		say(){
+			alert('我的名字是'+this.name+'今年'+this.age+'岁了，我会说话');
 		}
-		var people = new Person('Jack',18);
-		people.say();
-		var student = new Student('Eamon',20,'优秀');
-		student.study();
+	}
+	class Student extends Person{
+		constructor(name,age,grade){
+			super(name,age)
+			this.grade=grade;
+		}
+		say(){
+			alert(1);
+		}
+		study(){
+			alert('我的名字是'+this.name+'今年'+this.age+'岁了，我的成绩是'+this.grade)
+		}
+	}
+	var people = new Person('Jack',18);
+	people.say();
+	var student = new Student('Eamon',20,'优秀');
+	student.study();
 
 
 例如上面的这段代码，首先用**class**定义了一个“Person类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。简单地说，constructor内定义的方法和属性是实例对象自己的，而constructor外定义的方法和属性则是所有实例对象可以共享的。
