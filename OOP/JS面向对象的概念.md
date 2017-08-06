@@ -252,21 +252,21 @@ op5:
 
 1. 存储器模拟：
 		
-		function addEvent(obj,Events,fn){		
-			//若有对象，则走原来的那个对象，没有对象就创建一个对象去管理
-			obj.zdy = obj.zdy || {};
-			//如果obj.zdy中没有这个事件名，则复制一个空数组
-			obj.zdy[Events] = obj.zdy[Events] || [];
-			//把函数push到这个obj.zdy[指定事件]中
-			obj.zdy[Events].push(fn);		
-		};
+	function addEvent(obj,Events,fn){		
+		//若有对象，则走原来的那个对象，没有对象就创建一个对象去管理
+		obj.zdy = obj.zdy || {};
+		//如果obj.zdy中没有这个事件名，则复制一个空数组
+		obj.zdy[Events] = obj.zdy[Events] || [];
+		//把函数push到这个obj.zdy[指定事件]中
+		obj.zdy[Events].push(fn);		
+	};
 
 2. 触发器模拟：
 		
-		function trigger(obj,Events){
-			//如果obj.zdy没有这个事件，说明没有绑定这个事件
-			if(!obj.zdy[Events])return;			
-			obj.zdy[Events].forEach((e,i)=>{
-				e.call(obj);
-			});
-		}
+	function trigger(obj,Events){
+		//如果obj.zdy没有这个事件，说明没有绑定这个事件
+		if(!obj.zdy[Events])return;			
+		obj.zdy[Events].forEach((e,i)=>{
+			e.call(obj);
+		});
+	}
