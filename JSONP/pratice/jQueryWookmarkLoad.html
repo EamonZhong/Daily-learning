@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        /*border:1px solid #000;*/
+        width:1050px;
+        overflow: hidden;
+      }
+      li{
+        /*position: absolute;*/
+        border: 1px solid #ccc;
+        float: left;
+        margin: 8px;
+        width:236px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul">
+    	<li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+        <li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+         <li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+         <li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+
+
+    </ul>
+  <script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+//标记页码
+	let num = 1;
+//获取当前li
+	var lis = $('li');
+// 设置一个加载开关
+	var onOff = true;
+// 加载图片的函数调用
+	AddPic(num);
+
+	/*
+
+
+		问题：
+			在滚动的时候只要最小的那个元素已经进入if判断就会不停加载，
+			滚动的频率非常高，所以才会出现这个bug
+
+		想要的:
+			滚一下加载一组（50张），在加载的过程中不允许加载下一组图片，
+			加载下组图片的条件，本次加载完。
+
+	*/
+
+// window 的 下滚事件
+	$(window).scroll(function(){
+  //获取当前离屏幕下方最远的li
+		 var index = lis[minIndex()];
+//如果li 的滚轮高度小于或者等于当前的页面高度+当前页面的滚动高度则执行以下操作
+		 if(index.scrollHeight <= $(window).innerHeight() + $(window).scrollTop()){
+//如果开关为真，则num++
+		 		if(onOff){
+		 			num++;
+//调用添加图片的函数
+			 		AddPic(num);
+		 		}
+
+		 }
+
+	});
+  //添加图片的函数
+	function AddPic(num){
+  //  开始调用加载图片 并将开关设为false
+		onOff = false;
+  // 使用jquery的jsonp的数据跨域请求
+		$.ajax({
+      //数据类型 jsonp
+			dataType:'jsonp',
+      // 调用借口
+			url:'http://www.wookmark.com/api/json/popular?callback=?',
+			data:{
+        //data page 对应的是num页码值
+				page:num
+			},
+      //如果服务器响应成功
+			success:function(data){
+      //循环data中的内容
+				$.each(data,function(i,e){
+          //创建一div标签
+					const div = $('<div class="pic"></div>');
+          //创建一个 src 为 e.preview 的img标签
+					const img = $(`<img src="${e.preview}"/>`);
+
+					//当图片加载完成之后才插入，过滤坏图。
+					img[0].onload = function(){
+						var index = minIndex();
+						div.append(img);
+						$('li').eq(index).append(div);
+					};
+				});
+				onOff = true;
+			}
+	});
+	}
+
+	//找到li中谁最短
+	function minIndex(){
+		let lis = $('li');
+		let arr = [];
+		let num = 0;
+		lis.each(function(i,e){
+			arr.push(e.scrollHeight);
+		});
+		//最小的。
+		num = Math.min.apply(null,arr);
+		return arr.findIndex(e=>e==num);
+	}
+</script>
+</body>
+</html>
