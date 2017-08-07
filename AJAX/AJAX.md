@@ -55,16 +55,11 @@ XMLHttpRequest 对象如果要用于 AJAX 的话，其 open() 方法的 async �
 这时 JavScript 无需等待服务器的相应，而是可以等待服务器响应时执行其他的版本，当响应就绪后对响应进行处理。如果使用同步的方式进行数据请求，那么后续的操作必须等待服务器响应后才能继续执行。
 
 ### Ajax上传文件资源的处理方式
-当使用表单上传控件的时候，可以通过表单控件下的
-		files[0],找到上传的文件资源      
+当使用表单上传控件的时候，可以通过表单控件下的files[0],找到上传的文件资源      
 1. FormData的概念    
 FormData对象可以组装一组用 XMLHttpRequest发送请求的键/值对，通过append方法把键值对放到FormData对象中，当send的时候直接传FormData对象即可。    
 2. ajax.upload.onprogress   
-ajax.upload.onprogress事件主要是用来监听当前上传的进程，在这个事件对象中有load（每次传输的速度）还有total（总的进程）
-
-
-
-
+ajax.upload.onprogress事件主要是用来监听当前上传的进程，在这个事件对象中有load（每次传输的速度）还有total（总的进程）。
 
 ### 常用的Http状态码
 100 Continue    
