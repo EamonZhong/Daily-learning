@@ -42,5 +42,3 @@
 				
 		outerHeight/outerWidth 支持padding和border(获取的时候还支持margin)
 		设置：设置之后总的宽高为固定的某个值。
-
-4.	
