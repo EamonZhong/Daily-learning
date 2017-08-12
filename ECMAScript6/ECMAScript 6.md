@@ -88,6 +88,10 @@ let不允许在相同的作用域内声明同一个变量，例如：
 Promise是一种异步编程的解决方案，体现在代码中它是一个对象，可以通过Promise构造函数来实例化。   
 Promise对象有两个特点：   
 1.	对象的状态不受外界影响---	Promise对象代表一个异步操作，它共有三个状态	Pending（进行中）、Resolved（已完成）和Rejected（已失败），异步操作的结果决定了当前是哪一种状态。
-2.	一旦状态改变，就不会发生变化---Promise对象状态发生改变只有两种情况，一种是由Pending到Resolved,另一种是Pending到Rejected，若这两种情况之一发生了，则对象的状态将不会再发声改变。
-      
+2.	一旦状态改变，就不会发生变化---Promise对象状态发生改变只有两种情况，一种是由Pending到Resolved,另一种是Pending到Rejected，若这两种情况之一发生了，则对象的状态将不会再发声改变。   
+**两个原型上的方法**   
+1. Promise.prototype.then()   
+then方法是定义在原型对象Promise.prototype上的。第一个参数是Resolved状态的回调函数，第二个参数（可选是Rejected）状态的回调函数。  
+2. Promise.prototype.catch()   
+Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。
  		
