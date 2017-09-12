@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>CSS3加载动画</title>
+	</head>
+	<style>
+		.loading{width: 100%;height: 100%;position: fixed;top: 0; left: 0;z-index: 100;background: #fff;}
+		.loading .pic{width: 50px;height:50px;position: absolute;top: 0px;bottom: 0px;left: 0px;right: 0px;margin: auto;}
+		.loading .pic i{display: block;float: left;width: 6px;height: 50px;background: #399;margin: 0 2px;transform: scaleY(0.4);animation: load 1.2s infinite;}
+		.loading .pic i:nth-child(2){animation-delay: 0.1s;}
+		.loading .pic i:nth-child(3){animation-delay: 0.2s;}
+		.loading .pic i:nth-child(4){animation-delay: 0.3s;}
+		.loading .pic i:nth-child(5){animation-delay: 0.4s;}
+		
+		@keyframes load{
+			0%,40%,100%{transform:scaleY(0.4);}
+			20% {transform: scaleY(1);}
+		}
+	</style>
+	<body>
+		<div class="loading">
+			<div class="pic">
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+			</div>
+		</div>
+		<img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1505178787&di=4a3f7ea2ceb9b77da8884cb486b64270&src=http://e.hiphotos.baidu.com/zhidao/pic/item/54fbb2fb43166d2243b1069a402309f79152d2fd.jpg" alt="">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1505178880&di=b706d22e94a5bbeabeb22e2e4cfd877b&src=http://a2.att.hudong.com/65/58/01300542029535137169582835250.jpg" alt="d"/>
+		<img src="https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/3b87e950352ac65c15320a09f9f2b21193138a90.jpg" alt="d"/>
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505189005052&di=f9c56df52d2f4586d2d5425aac55bae9&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F1ad5ad6eddc451dadfa6410cb4fd5266d1163280.jpg" alt="d"/>
+		<img src="https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/d0c8a786c9177f3e2575b1ea72cf3bc79e3d5697.jpg" alt="d"/>
+		<img src="https://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/d833c895d143ad4ba3860b2780025aafa50f06a8.jpg" alt="d"/>
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505189005044&di=635993cd7b10c13e1600a42d6c18e59c&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F4ec2d5628535e5ddebf4ea8974c6a7efcf1b628f.jpg" alt="d"/>
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505189084521&di=962173795caa00c9be370ef7f89ec40e&imgtype=0&src=http%3A%2F%2Fstatic.zhulong.com%2Fphoto%2Fsmall%2F201007%2F26%2F412693_1_0_0_560_w_0.jpg" alt="d"/>		
+
+		
+	<script src="js/jquery-3.2.1.min.js">
+		/*网页加载进度条		 
+		 * 很多的进度条就是使用定时器--只是表现上实现了进度条
+		 * 实际上应该根据主体内容加载进度条。
+		 * */
+	</script>
+	<script>
+		document.onreadystatechange=function(){
+			if(document.readyState=="complete"){
+				$(".loading").fadeOut();
+			}
+		}
+	</script>
+	</body>
+</html>
