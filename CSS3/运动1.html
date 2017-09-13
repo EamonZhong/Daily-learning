@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			@keyframes move{
+				from{
+					width: 100px;
+					background: red;
+				}
+				to{
+					width: 600px;
+					background: purple;
+				}
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				margin-bottom: 20px;
+				background: red;
+				animation: move 10s;
+			}
+			div:nth-of-type(1){
+				animation-timing-function: linear;
+			}
+			div:nth-of-type(2){
+				animation-timing-function: ease;
+			}
+			div:nth-of-type(3){
+				animation-timing-function: ease-in;
+			}
+			div:nth-of-type(4){
+				animation-timing-function: ease-out;
+			}
+			div:nth-of-type(5){
+				animation-timing-function: ease-in-out;
+			}
+		</style>
+	</head>
+	<!--
+		可选属性
+		animation-timing-function	动画运动形式
+			linear	匀速
+			ease	缓冲
+			ease-in	由慢到快
+			ease-out	由快到慢
+			ease-in-out	由慢到快再到慢
+			cubic-bezier(number, number, number, number)：	特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内
+
+	-->
+	<body>
+		<div>linear</div>
+		<div>ease</div>
+		<div>ease-in</div>
+		<div>ease-out</div>
+		<div>ease-in-out</div>
+	</body>
+</html>
