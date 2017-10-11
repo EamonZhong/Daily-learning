@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="main" style="width:600px;height:400px"></div>
+  <script src="js/echarts.js"></script>
+  <script>
+    var Mychart = echarts.init(document.getElementById('main'));
+    var option = {
+      title: {
+        text: "某楼盘销售情况",
+        subtext: "纯属虚构"
+      },
+      tooltip: {
+        trigger: "axis"
+      },
+      legend: {
+        data: ["意向", "预购", "成交"]
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          mark: {
+            show: true
+          },
+          dataView: {
+            show: true,
+            readOnly: true
+          },
+          magicType: {
+            show: false,
+            type: ["line", "bar", "stack", "tiled"]
+          },
+          restore: {
+            show: true
+          },
+          saveAsImage: {
+            show: true
+          }
+        }
+      },
+      calculable: true,
+      xAxis: [{
+        type: "category",
+        boundaryGap: false,
+        data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+      }],
+      yAxis: [{
+        type: "value"
+      }],
+      series: [{
+          name: "成交",
+          type: "line",
+          smooth: true,
+          areaStyle:{normal:{}},
+          data: [10, 12, 21, 54, 260, 830, 710]
+        },
+        {
+          name: "预购",
+          type: "line",
+          smooth: true,
+          areaStyle:{normal:{}},
+          data: [30, 182, 434, 791, 390, 30, 10]
+        },
+        {
+          name: "意向",
+          type: "line",
+          smooth: true,
+          areaStyle:{normal:{color:'skyblue'}},
+          data: [1320, 1132, 601, 234, 120, 90, 20]
+        }
+      ]
+    }
+    Mychart.setOption(option)
+  </script>
+</body>
+
+</html>
