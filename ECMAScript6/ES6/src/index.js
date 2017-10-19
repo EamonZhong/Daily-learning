@@ -7,3 +7,14 @@
 
 // }
 // kz(1,2,3);
+
+
+//对象的结构
+let json = {
+  a:'zym',
+  b:'Eamon'
+}
+function fun({a,b='aaa'}){
+  console.log(a,b);
+}
+fun(json);
