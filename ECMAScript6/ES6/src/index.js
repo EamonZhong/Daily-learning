@@ -10,11 +10,19 @@
 
 
 //对象的结构
-let json = {
-  a:'zym',
-  b:'Eamon'
-}
-function fun({a,b='aaa'}){
-  console.log(a,b);
-}
-fun(json);
+// let json = {
+//   a:'zym',
+//   b:'Eamon'
+// }
+// function fun({a,b='aaa'}){
+//   console.log(a,b);
+// }
+// fun(json);
+
+//数组合并
+var a={a:'aa'};
+var b={b:'bb'};
+var c={c:'cc'};
+ 
+let d=Object.assign(a,b,c)
+console.log(d);
