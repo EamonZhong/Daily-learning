@@ -20,9 +20,14 @@
 // fun(json);
 
 //数组合并
-var a={a:'aa'};
-var b={b:'bb'};
-var c={c:'cc'};
+// var a={a:'aa'};
+// var b={b:'bb'};
+// var c={c:'cc'};
  
-let d=Object.assign(a,b,c)
-console.log(d);
+// let d=Object.assign(a,b,c)
+// console.log(d);
+
+//字符串查找
+let jspang='zym';
+let blog = '我是zym今年18岁';
+document.write(blog.includes(jspang));
