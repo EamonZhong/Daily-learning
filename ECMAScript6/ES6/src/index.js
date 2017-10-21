@@ -28,6 +28,6 @@
 // console.log(d);
 
 //字符串查找
-let jspang='zym';
+let zym='zym';
 let blog = '我是zym今年18岁';
-document.write(blog.includes(jspang));
+document.write(blog.includes(zym));
