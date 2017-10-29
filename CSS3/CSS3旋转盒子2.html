@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1
+{
+position: relative;
+height: 200px;
+width: 200px;
+margin: 100px;
+padding:10px;
+border: 1px solid black;
+}
+
+#div2
+{
+padding:50px;
+position: absolute;
+border: 1px solid black;
+background-color: yellow;
+transform: rotate(45deg);
+transform-origin:20% 40%;
+-ms-transform: rotate(45deg); /* IE 9 */
+-ms-transform-origin:20% 40%; /* IE 9 */
+-webkit-transform: rotate(45deg); /* Safari and Chrome */
+-webkit-transform-origin:20% 40%; /* Safari and Chrome */
+-moz-transform: rotate(45deg); /* Firefox */
+-moz-transform-origin:20% 40%; /* Firefox */
+-o-transform: rotate(45deg); /* Opera */
+-o-transform-origin:20% 40%; /* Opera */
+}
+</style>
+</head>
+
+<body>
+
+<div id="div1">
+  <div id="div2">旋转的盒子2</div>
+</div>
+
+</body>
+</html>
