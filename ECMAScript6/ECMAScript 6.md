@@ -94,4 +94,10 @@ Promise对象有两个特点：
 then方法是定义在原型对象Promise.prototype上的。第一个参数是Resolved状态的回调函数，第二个参数（可选是Rejected）状态的回调函数。  
 2. Promise.prototype.catch()   
 Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。
- 		
+ 
+### 使用Set进行数组去重
+	let a = [1,2,3,4,5,2,1]
+	let b = new Set()
+	a.map((n,i)=>{
+		b.add(n)
+	})		
